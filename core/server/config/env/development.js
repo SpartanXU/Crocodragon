@@ -3,5 +3,8 @@
  */
 
 module.exports = {
+    //database url
+    db: 'mongodb://localhost/test',
     //Development configuration options
-}
+    sessionSecret: 'developmentSessionSecret'
+};
