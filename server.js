@@ -10,9 +10,11 @@ var mongoose = require('./core/server/config/mongoose'), //set the mongoose conf
     express = require('./core/server/config/express'), //set the express config file
     passport = require('./core/server/config/passport'); //set the passport config file
 
+
 var db = mongoose();
 var app = express();
 var passport = passport();
+
 
 //run the server on port 3000
 app.listen(3000);

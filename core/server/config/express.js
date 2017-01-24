@@ -16,18 +16,19 @@ module.exports = function () {
     //create the application
     var app = express();
 
-    //determine which environment using if/else statement
+    //determine environment
     if (process.env.NODE_ENV === 'development') {
         app.use(morgan('dev'));
     } else if (process.env.NODE_ENV === 'production') {
         app.use(compress());
     }
 
-    //add necessary middleware
+    //necessary middleware
     app.use(bodyParser.urlencoded({
-        extended: true
+        extended: true,
+        limit: '10mb'
     }));
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({limit: '10mb'}));
     app.use(methodOverride());
 
     //express.session middleware
@@ -49,9 +50,11 @@ module.exports = function () {
 
     //set the route file
     require('../routes/index.server.routes') (app);
-    require('../../../userManagement/server/routes/userManagement.server.routes') (app);
+    require('../routes/usersManagement.server.routes') (app);
+    require('../../../wallet/server/routes/wallet.server.routes')(app);
 
     //serve static files, place below the routing command for faster response
-    app.use(express.static('core/client'));
+    app.use(express.static('./core/client'));
+    app.use(express.static('./wallet/client'));
     return app;
 };

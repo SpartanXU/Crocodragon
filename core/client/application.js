@@ -4,7 +4,7 @@
 
 var mainApplicationModuleName = 'core';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute','superNavbar']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute','navbar','ngMaterial','users','ngResource','wallet']);
 
 //Hashbangs configuration
 mainApplicationModule.config(['$locationProvider',

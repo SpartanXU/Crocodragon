@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="../css/walletStyle.css">
+<section data-ng-controller="WalletController" ng-cloak>
+    <div data-ng-show="!authentication.user._id" layout="row" layout-align="center center" style="min-height: 500px">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">Warning:</h2>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding>
+                <p>Please sign in to create your wallet, or sign up your account if you haven't yet.</p>       
+                <md-card-actions layout="row" layout-align="center center">
+                    <md-button href="/signin" class="md-primary md-raised">Sign In</a></md-button>
+                    <md-button href="/signup" class="md-primary md-raised">Sign Up</a></md-button>
+                </md-card-actions>
+            </md-content>
+        </md-card>
+    </div>
+    
+    <div data-ng-show="authentication.user._id" layout="column" class="md-inline-form" style="min-height: 500px">
+        <md-content layout-padding>
+            <form data-ng-submit="create()" novalidate>
+                <div layout-gt-sm="row" class="avatar-upload md-block">
+                    <span class="md-headline" flex-gt-xs>{{authentication.user.fullName}}'s Wallet</span>
+                        <label for='file' class="md-block">
+                            <img data-ng-src="{{pic}}"/>
+                        </label>
+                        <input type="file" id="file" onchange="angular.element(this).scope().imageUpload(this)" >
+                </div>
+                <div class="avatar-upload">
+                    
+                </div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name</label>
+                    <input ng-model="user.firstName">
+                </md-input-container>
+                <div>
+                    Date of Birth:
+                    <div>
+                        <input type="text" data-ng-model="birthday" id='birthday' placeholder="Date of Birth">
+                    </div>
+                </div>
+                <div>
+                    Zip:
+                    <input type="number" id="zip">
+                </div>
+                <div>
+                    Gender:
+                    <div>
+                        <select name="genderSelect" data-ng-model="gender" id="gender">
+                            <option value="">-- Not Tell --</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    Address:
+                    <div>
+                        <input type="text" data-ng-model="address" id='address' placeholder="Address">
+                    </div>
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+                <div data-ng-show="error">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </form>
+        </md-content>
+        
+    </div>        
+</section>

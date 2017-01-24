@@ -8,7 +8,8 @@ var config = require('./config'),
 module.exports = function () {
     var db = mongoose.connect(config.db);  //connect to database using the db url
 
-    require('../../../userManagement/server/models/userManagement.server.model');
+    require('../models/usersManagement.server.model');
+    require('../../../wallet/server/models/wallet.server.model');
 
     return db;
 };

@@ -1,7 +1,6 @@
 /**
- * Created by xujingwei on 9/14/16.
+ * Index page controller
  */
-
 exports.render = function (req, res) {
 
     //record the time of last user request
@@ -11,9 +10,10 @@ exports.render = function (req, res) {
     //update the record of last user request time
     req.session.lastVisit = new Date();
 
-    //render the index ejs view
+    //render the index page
     res.render('index',{
-        title: 'Hello World', //set title of the page
+        title: 'Crocodragon',
         user: JSON.stringify(req.user)
     });
+
 };
