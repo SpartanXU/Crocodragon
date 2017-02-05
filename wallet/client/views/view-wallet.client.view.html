@@ -1,6 +1,21 @@
 <section data-ng-controller="WalletController" data-ng-init="findOne()">
     <div data-ng-show="!authentication.user._id">
-        <h2>Authenticated user only</h1>
+        <div data-ng-show="!authentication.user._id" layout="row" layout-align="center center" style="min-height: 500px">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-toolbar class="md-warn">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex">Warning:</h2>
+                    </div>
+                </md-toolbar>
+                <md-content layout-padding>
+                    <p>Please sign in to create your wallet, or sign up your account if you haven't yet.</p>       
+                    <md-card-actions layout="row" layout-align="center center">
+                        <md-button href="/signin" class="md-primary md-raised">Sign In</a></md-button>
+                        <md-button href="/signup" class="md-primary md-raised">Sign Up</a></md-button>
+                    </md-card-actions>
+                </md-content>
+            </md-card>
+        </div>
     </div>
 
     <div data-ng-hide="!authentication.user._id">

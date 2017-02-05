@@ -3,6 +3,7 @@
 <head>
     <title><%= title %></title>
     <link rel="stylesheet" type="text/css" href="../lib/angular-material/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <md-toolbar data-ng-controller="NavbarController">
@@ -10,43 +11,21 @@
             <md-button class="md-icon-button" aria-label="Index">
                 <md-icon md-svg-icon="/img/logo.svg" href="/"></md-icon>
             </md-button>
-            <md-button class="md-icon-button" aria-label="Account">
-                <md-icon md-svg-icon="/img/logo.svg" href="/"></md-icon>
+            <md-button class="md-icon-button" aria-label="Account" ng-click="go('/wallet')">
+                <i class="material-icons">account_box</i>                
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Shopping_Cart">
+                <i class="material-icons">shopping_cart</i>                
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Message_Center">
+                <i class="material-icons">message</i>             
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Settings">
+                <i class="material-icons">settings</i>            
             </md-button>
         </div>
     </md-toolbar>
-        <div>
-
-            <md-icon md-svg-src="../img/logo.svg"><a href="/index"></a> </md-icon>
-            <md-button><a href="/signup">Sign up</a></md-button>
-            <md-button><a href="/signin">Sign in</a></md-button>
-            <md-menu>
-                <md-button md-menu-origin ng-click="$mdOpenMenu()">Help</md-button>
-                <md-menu-content width="2">
-                    <md-menu-item>
-                        <md-button>Help</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button>About</md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
-            
-        </div>
-        <div class="nav-buttons">
-            <md-button class="md-raised md-accent">My profile</md-button>
-            <md-button class="md-raised md-warn">Log Out</md-button>
-        </div>
-    </nav>    
     <section ng-view></section>
-    
-    <% if (user) { %>
-        <a href="/signout">Sign out</a>
-        
-    <% } else { %>
-        <a href="/signup">Sign up</a>
-        <a href="/signin">Sign in</a>
-    <% } %>
 
     <script type="text/javascript">
         window.user = <%- user || 'null' %>;
